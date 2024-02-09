@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !hitCountDown)
         {
             hitCountDown = true;
-            StartCoroutine(FindObjectOfType<UIThings>().HitAnimation());
+            StartCoroutine(UIThings.instance.HitAnimation());
         }
     }
 
