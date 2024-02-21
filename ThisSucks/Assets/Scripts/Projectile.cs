@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     public Vector3 targetPos;
     public int damage;
 
+    public bool enemyAmmo = true;
+
     float t = 0;
 
     // Update is called once per frame

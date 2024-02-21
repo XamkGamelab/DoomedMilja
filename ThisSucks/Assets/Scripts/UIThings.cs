@@ -7,11 +7,27 @@ public class UIThings : MonoBehaviour
     public GameObject fist, gun;
     public static UIThings instance;
 
+    public TMPro.TextMeshProUGUI hpText;
+
     private void Awake()
     {
         instance = this;
     }
 
+    private void Start()
+    {
+        UpdateHp();
+    }
+
+    public void UpdateHp()
+    {
+        if(Player.instance.hp > 0)
+        {
+            hpText.text = "HP: " + Player.instance.hp;
+        }
+        else { hpText.text = 0.ToString(); }
+
+    }
 
     // Start is called before the first frame update
     public void UnlockGun()
@@ -40,6 +56,6 @@ public class UIThings : MonoBehaviour
             i += 0.01f;
         }
 
-        FindObjectOfType<Player>().hitCountDown = false;
+        Player.instance.hitCountDown = false;
     }
 }

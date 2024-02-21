@@ -62,4 +62,23 @@ public class Enemy : MonoBehaviour
         proj.GetComponent<Projectile>().damage = rnd;
 
     }
+
+    public void TakeHP(int taken)
+    {
+        hp -= taken;
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Projectile>() && !other.gameObject.GetComponent<Projectile>().enemyAmmo)
+        {
+            TakeHP(other.gameObject.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
+
+        }
+    }
 }
